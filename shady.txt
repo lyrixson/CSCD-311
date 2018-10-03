@@ -1,0 +1,293 @@
+
+<?php
+//connection variables
+$host = "localhost";
+$user ="root";
+$password="";
+
+//connect to database store the connection
+$database="project";
+$connection= mysqli_connect(
+$host,
+$user,
+$password,
+$database)
+ or die ("could not connect");
+ 
+ //if connection is established, continue
+echo "connected";
+
+//check of POST variable exist
+if(isset($_POST["FIRSTNAME"]) &&
+isset($_POST["LASTNAME"]) &&
+isset($_POST["USERNAME"]) &&
+isset($_POST["PASSWORD"]) &&
+isset($_POST["CONFIRM_PASSWORD"]))
+{
+	
+	//retrieve variables from _POST array
+	$FIRSTNAME= $_POST["FIRSTNAME"];
+	$LASTNAME=  $_POST["LASTNAME"];
+	$USERNAME=  $_POST["USERNAME"];
+	$PASSWORD=  $_POST["PASSWORD"];
+	$CONFIRM_PASSWORD= $_POST["CONFIRM_PASSWORD"];
+	if ($PASSWORD==$CONFIRM_PASSWORD){
+		$sql = "INSERT INTO users (FIRSTNAME, LASTNAME, USERNAME, PASSWORD) VALUES('$FIRSTNAME','$LASTNAME','$USERNAME','$PASSWORD')";
+	
+		//execute insert query
+		$execResult = mysqli_query($connection, $sql);
+		
+		//check if query was successful
+		if(!$execResult) {
+			echo "an error occurred and the user could not be created";
+		}else {
+			echo "USER CREATED SUCCESSFULLY";
+		}
+	}else{
+		echo"PASSWORD MUST MATCH";
+	}
+}
+?>
+
+<!doctype html>
+<html>
+     <head>
+	    <title>login </title>
+	</head>
+	
+	<body>
+	     <form action "#" method="POST">
+		 <label>FIRSTNAME</label><br>
+		 <input type ="text" name="FIRSTNAME"><br>
+		 <label>LASTNAME</label><br>
+		 <input type ="text" name="LASTNAME"><br>
+         <label>USERNAME</label><br>
+		 <input type ="text" name="USERNAME "><br>
+         <label>PASSWORD</label><br>
+		 <input type ="password" name="PASSWORD"><br>	
+         <label>confirm password</label><br>
+		 <input type ="password" name="CONFIRM_PASSWORD"><br>
+		 <input type ="submit" value="register">
+         </form>		 
+		 
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+//connection variables
+$host = "localhost";
+$user ="root";
+$password="";
+
+//connect to database store the connection
+$database="project1";
+$connection= mysqli_connect(
+$host,
+$user,
+$password,
+$database)
+ or die ("could not connect");
+ 
+ //if connection is established, continue
+echo "connected";
+
+//check of POST variable exist
+if(isset($_POST["firstname"]) &&
+isset($_POST["lastname"]) &&
+isset($_POST["username"]) &&
+isset($_POST["password"]) &&
+isset($_POST["password_confirm"]))
+{
+	
+	//retrieve variables from _POST array
+	$firstname= $_POST["firstname"];
+	$lastname=  $_POST["lastname"];
+	$username=  $_POST["username"];
+	$password=  $_POST["password"];
+	$password_confirm= $_POST["password_confirm"];
+	if ($password==$password_confirm){
+		$sql = "INSERT INTO users (firstname, lastname, username, password) VALUES('$firstname','$lastname','$username','$password')";
+	
+		//execute insert query
+		$execResult = mysqli_query($connection, $sql);
+		
+		//check if query was successful
+		if(!$execResult) {
+			echo "an error occurred and the user could not be created";
+		}else {
+			echo "user created successfully";
+		}
+	}else{
+		echo"password must match";
+	}
+}
+?>
+
+<!doctype html>
+<html>
+     <head>
+	    <title>login </title> 
+	</head>
+	
+	<body>
+	     <form action "#" method="POST">
+		 <label>firstname</label><br>
+		 <input type ="text" name="firstname"><br>
+		 <label>lastname</label><br>
+		 <input type ="text" name="lastname"><br>
+         <label>username</label><br>
+		 <input type ="text" name="username"><br>
+         <label>password</label><br>
+		 <input type ="password" name="password"><br>	
+         <label>confirm password</label><br>
+		 <input type ="password" name="password_confirm"><br>
+		 <input type ="submit" value="register">
+         </form>		 
+		 
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+$host="localhost";
+$user="root";
+$password="";
+$database="project1";
+
+
+// connect to the database store the connection
+$connection=mysqli_connect(
+	$host,
+	$user,
+	$password,
+	$database
+) or die("could not connect you");
+echo "connected";
+
+
+// check if POST variables exist 
+      if(isset($_POST["FIRSTNAME"]) &&
+   		isset($_POST["LASTNAME"]) &&
+   		isset($_POST["USERNAME"]) &&
+   		isset($_POST["PASSWORD"]) &&
+   		isset($_POST["PASSWORD_CONFIRM"])) {
+
+
+   		echo 'POST variables exist';
+   		// Retrieve variable from_POST array 
+   		$firstname =$_POST["FIRSTNAME"];
+   		$lastname =$_POST["LASTNAME"];
+   		$username =$_POST["USERNAME"];
+   		$password =$_POST["PASSWORD"];
+   		$password_confirm =$_POST["PASSWORD_CONFIRM"];
+
+
+ 
+   		if($password == $password_confirm){
+
+   			// formulate the insert query with the form data 
+   			$sql = "INSERT INTO users (FIRSTNAME,LASTNAME,USERNAME,PASSWORD,CREATED_AT)
+   				VALUES('$FIRSTNAME','$LASTNAME','$USERNAME',$PASSWORD_CONFIRM,'NULL')";
+
+			//excute insert query
+			$execResult =mysqli_query($connection, $sql);
+
+			// check if query was succesful
+			if(!$execResult){
+				echo "an error occured and the user could no be created";
+			}
+			else{
+				echo "user created succesfully";
+			}
+
+		} else{
+			echo "password must match";
+	
+	}
+   }		
+?>
+   		
+
+   
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>sign-up</title>
+	    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="js/bootstrap.js">
+	    <link rel="stylesheet" type="text/css" href="js/bootstr">
+
+	</head>
+
+
+	<body>
+			
+	 	<div class="col-sm-6" style="margin-left: 340px; margin-top: 70px;">
+	 		<form action="index.php" method="POST">
+	 			<h1 style="color:black"><ins>SIGN UP REGISTRATION</ins></h1>
+	 				<h4 style="color:black"><label>First name:</label></h4>
+	 					<input type="text" name="FIRSTNAME" placeholder="FIRSTNAME" class="form-control">
+	 				<h4 style="color:black"><label>Last name:</label></h4>
+	 				<input type="text" name="LASTNAME" placeholder="LASTNAME" class="form-control">
+
+	 				<h4 style="color:black"><label>Username:</label></h4>
+	 				<input type="text" name="USERNAME" placeholder="USERNAME" class="form-control">
+
+	 				<h4 style="color:black"><label>Password:</label><h4>
+	 				<input name="PASSWORD" placeholder="PASSWORD" type="PASSWORD" class="form-control">
+
+	 				<h4 style="color:black"><label>Re-type Password:</label> <h4>
+	 				<input name="PASSWORD_CONFIRM" placeholder="Re-type PASSWORD" type="PASSWORD" class="form-control">
+	 			
+	 				<button class="btn btn-success" name="submit">Register</button>
+
+	 		</form>
+
+<style type="text/css">
+	label{
+
+		font-weight: 70px;
+	}
+
+</style>
+
+	 	</div>
+
+
+	<style>
+	body {
+	    background-image: url("background.jpg");
+	}
+	</style>
+
+
+
+		
+	</body>
+</html>
